@@ -21,37 +21,39 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background flex justify-center">
       <div className="w-full max-w-[375px]">
-        {screen === "welcome" && (
-          <WelcomeScreen
-            onNext={(name) => {
-              setObjectName(name);
-              setScreen("exploration");
-            }}
-            onViewJournal={() => setScreen("journal")}
-          />
-        )}
-        {screen === "exploration" && (
-          <ExplorationScreen onNext={() => setScreen("insight")} />
-        )}
-        {screen === "insight" && (
-          <InsightScreen
-            onNext={(sel) => {
-              setInsight(sel);
-              setScreen("closing");
-            }}
-          />
-        )}
-        {screen === "closing" && (
-          <ClosingScreen
-            objectName={objectName}
-            insight={insight}
-            onViewJournal={() => setScreen("journal")}
-            onClose={reset}
-          />
-        )}
-        {screen === "journal" && (
-          <JournalScreen onStartEntry={reset} />
-        )}
+        <div key={screen} className="animate-fade-in">
+          {screen === "welcome" && (
+            <WelcomeScreen
+              onNext={(name) => {
+                setObjectName(name);
+                setScreen("exploration");
+              }}
+              onViewJournal={() => setScreen("journal")}
+            />
+          )}
+          {screen === "exploration" && (
+            <ExplorationScreen onNext={() => setScreen("insight")} />
+          )}
+          {screen === "insight" && (
+            <InsightScreen
+              onNext={(sel) => {
+                setInsight(sel);
+                setScreen("closing");
+              }}
+            />
+          )}
+          {screen === "closing" && (
+            <ClosingScreen
+              objectName={objectName}
+              insight={insight}
+              onViewJournal={() => setScreen("journal")}
+              onClose={reset}
+            />
+          )}
+          {screen === "journal" && (
+            <JournalScreen onStartEntry={reset} />
+          )}
+        </div>
       </div>
     </div>
   );
