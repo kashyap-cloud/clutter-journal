@@ -21,7 +21,6 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background flex justify-center">
       <div className="w-full max-w-[375px]">
-        <div key={screen} className="animate-fade-in">
           {screen === "welcome" && (
             <WelcomeScreen
               onNext={(name) => {
@@ -53,7 +52,6 @@ const Index = () => {
           {screen === "journal" && (
             <JournalScreen onStartEntry={reset} />
           )}
-        </div>
       </div>
     </div>
   );
